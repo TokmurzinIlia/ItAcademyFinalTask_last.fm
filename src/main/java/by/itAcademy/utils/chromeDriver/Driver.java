@@ -8,9 +8,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.concurrent.TimeUnit;
 
 public class Driver {
-    private static WebDriver driver;
 
-    private Driver(){}
+    private static WebDriver driver;
 
     private static void initializeChromeDriver() {
         WebDriverManager.chromedriver().setup();

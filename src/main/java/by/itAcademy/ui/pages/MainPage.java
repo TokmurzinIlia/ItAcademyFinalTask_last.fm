@@ -11,10 +11,10 @@ public class MainPage {
 
     private WebDriver driver;
 
-    private final By primaryNavigationMenu =
+    public static final By primaryNavigationMenu =
             By.cssSelector("ul[class=\"js-navlist-items navlist-items\"]>li[class=\"masthead-nav-item\"]");
 
-    private final By followUsMenu =
+    public static final By followUsMenu =
             By.xpath("//h2[text()=\"Follow Us\"]/..//li");
 
     private final By followUsFacebook =
@@ -35,22 +35,22 @@ public class MainPage {
         driver.findElement(followUsFacebook).click();
     }
 
-    public List<String> getTextElementPrimaryNavigationMenu(){
+    public List<String> getTextElementFromBlock(By selector){
 
 
-        return driver.findElements(primaryNavigationMenu)
+        return driver.findElements(selector)
                 .stream()
                 .map(WebElement::getText)
                 .collect(Collectors.toList());
     }
 
-    public List<String> getTextElementFollowUsMenu(){
-
-
-        return driver.findElements(followUsMenu)
-                .stream()
-                .map(WebElement::getText)
-                .collect(Collectors.toList());
-    }
+//    public List<String> getTextElementFollowUsMenu(){
+//
+//
+//        return driver.findElements(followUsMenu)
+//                .stream()
+//                .map(WebElement::getText)
+//                .collect(Collectors.toList());
+//    }
 
 }

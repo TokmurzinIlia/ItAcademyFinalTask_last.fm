@@ -7,7 +7,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ArgumentsSource;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
@@ -29,29 +32,30 @@ public class LastFMTest {
         Driver.quitDriver();
     }
 
-    @Test
-    public void checkElementPrimaryNavigationMenu(){
+    @ParameterizedTest(name = "{index} {2}")
+    @ArgumentsSource(DataForMainPage.class)
+    public void checkElementPrimaryNavigationMenu(By selector, List<String> str, String name){
 
         List<String> actualWebElementList = new MainPage(driver)
                 .openMainPage()
-                .getTextElementPrimaryNavigationMenu();
+                .getTextElementFromBlock(selector);
 
-        List<String> expectedWebElementList = new DataForMainPage().primaryNavigationMenu;
+        List<String> expectedWebElementList = str;
 
         assertEquals(expectedWebElementList, actualWebElementList);
     }
 
-    @Test
-    public void checkElementFollowUsMenu(){
-
-        List<String> actualWebElementList = new MainPage(driver)
-                .openMainPage()
-                .getTextElementFollowUsMenu();
-
-        List<String> expectedWebElementList = new DataForMainPage().followUsMenu;
-
-        assertEquals(expectedWebElementList, actualWebElementList);
-    }
+//    @Test
+//    public void checkElementFollowUsMenu(){
+//
+//        List<String> actualWebElementList = new MainPage(driver)
+//                .openMainPage()
+//                .getTextElementFollowUsMenu();
+//
+//        List<String> expectedWebElementList = new DataForMainPage().followUsMenu;
+//
+//        assertEquals(expectedWebElementList, actualWebElementList);
+//    }
 
     @Test
     public void checkFacebookLinkURL() throws InterruptedException {

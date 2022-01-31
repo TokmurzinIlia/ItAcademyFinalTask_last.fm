@@ -12,16 +12,16 @@ import java.net.URISyntaxException;
 
 
 
-public class Main {
-    public static void main(String[] args) throws IOException, URISyntaxException {
-        WebDriver driver;
-        driver = Driver.getChromeDriver();
-
-        MainPage mainPage = new MainPage(driver);
-        System.out.println(mainPage
-                .openMainPage()
-                .getTextElementPrimaryNavigationMenu());
-
-
-    }
-}
+//public class Main {
+//    public static void main(String[] args) throws IOException, URISyntaxException {
+//        WebDriver driver;
+//        driver = Driver.getChromeDriver();
+//
+//        MainPage mainPage = new MainPage(driver);
+//        System.out.println(mainPage
+//                .openMainPage()
+//                .getTextElementPrimaryNavigationMenu());
+//
+//
+//    }
+//}
