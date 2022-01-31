@@ -1,13 +1,6 @@
 package by.itAcademy.utils;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
-import static java.nio.file.Files.newBufferedWriter;
-import static java.nio.file.Files.probeContentType;
 
 public class FileHandler {
 
