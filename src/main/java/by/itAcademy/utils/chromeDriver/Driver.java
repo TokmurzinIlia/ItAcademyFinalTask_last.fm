@@ -8,7 +8,10 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.concurrent.TimeUnit;
 
 public class Driver {
-    public static WebDriver driver;
+    private static WebDriver driver;
+
+    private Driver(){}
+
     private static void initializeChromeDriver() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
@@ -18,7 +21,15 @@ public class Driver {
     }
 
     public static WebDriver getChromeDriver() {
-        initializeChromeDriver();
+        if (driver == null){
+            initializeChromeDriver();
+        }
         return driver;
     }
+
+    public static void quitDriver() {
+        driver.quit();
+        driver = null;
+    }
+
 }

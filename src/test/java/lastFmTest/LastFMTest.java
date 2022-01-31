@@ -26,7 +26,7 @@ public class LastFMTest {
 
     @AfterEach
     public void closeDriver(){
-        driver.quit();
+        Driver.quitDriver();
     }
 
     @Test
