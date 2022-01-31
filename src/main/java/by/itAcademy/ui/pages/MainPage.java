@@ -44,6 +44,9 @@ public class MainPage {
     public static final By followUsYouTube =
             By.xpath("//li/a[text()=\"YouTube\"]");
 
+    private final By singUpButton =
+            By.cssSelector("ul[class=\" site-auth site-auth--anon hidden-xs \"]>li>a[href=\"/join\"]");
+
 
 
     public MainPage(WebDriver driver)
@@ -59,6 +62,10 @@ public class MainPage {
 
     public void clickSocialNetworkLink(By selector){
         driver.findElement(selector).click();
+    }
+
+    public void clickSingUpButton(){
+        driver.findElement(singUpButton).click();
     }
 
     public List<String> getTextElementFromBlock(By selector){
