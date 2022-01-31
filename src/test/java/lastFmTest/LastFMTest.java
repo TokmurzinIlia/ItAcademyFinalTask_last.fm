@@ -2,9 +2,9 @@ package lastFmTest;
 
 import by.itAcademy.ui.pages.MainPage;
 import by.itAcademy.utils.chromeDriver.Driver;
-import lastFmTest.data.DataForMainPage;
+import lastFmTest.data.DataForMainPageTextBlock;
+import lastFmTest.data.DataForSocialNetworkLink;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 //import org.junit.jupiter.params.ParameterizedTest;
@@ -32,8 +32,8 @@ public class LastFMTest {
         Driver.quitDriver();
     }
 
-    @ParameterizedTest(name = "{index} {2}")
-    @ArgumentsSource(DataForMainPage.class)
+    @ParameterizedTest(name = "{2}")
+    @ArgumentsSource(DataForMainPageTextBlock.class)
     public void checkElementPrimaryNavigationMenu(By selector, List<String> str, String name){
 
         List<String> actualWebElementList = new MainPage(driver)
@@ -45,31 +45,21 @@ public class LastFMTest {
         assertEquals(expectedWebElementList, actualWebElementList);
     }
 
-//    @Test
-//    public void checkElementFollowUsMenu(){
-//
-//        List<String> actualWebElementList = new MainPage(driver)
-//                .openMainPage()
-//                .getTextElementFollowUsMenu();
-//
-//        List<String> expectedWebElementList = new DataForMainPage().followUsMenu;
-//
-//        assertEquals(expectedWebElementList, actualWebElementList);
-//    }
-
-    @Test
-    public void checkFacebookLinkURL() throws InterruptedException {
+    @ParameterizedTest(name = "{2}")
+    @ArgumentsSource(DataForSocialNetworkLink.class)
+    public void checkFacebookLinkURL(By selector, String expectedLink, String name) throws InterruptedException {
         MainPage mainPage = new MainPage(driver);
+
         mainPage
                 .openMainPage()
-                .clickFacebookLink();
-        ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+                .clickSocialNetworkLink(selector);
+
+        ArrayList<String> tabs2 = new ArrayList<> (driver.getWindowHandles());
         String url = driver.switchTo().window(tabs2.get(1)).getCurrentUrl();
         driver.close();
         driver.switchTo().window(tabs2.get(0));
-        Thread.sleep(5000);
-        System.out.println(url);
-        assertEquals("https://www.facebook.com/lastfm", url);
+
+        assertEquals(expectedLink, url);
     }
 
 
