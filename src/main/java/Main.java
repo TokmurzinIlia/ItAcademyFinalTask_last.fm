@@ -1,7 +1,9 @@
 
+import by.itAcademy.api.methods.Auth;
 import by.itAcademy.ui.pages.MainPage;
 
 import by.itAcademy.utils.chromeDriver.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 
@@ -14,8 +16,21 @@ import java.net.URISyntaxException;
 
 public class Main {
     public static void main(String[] args) throws IOException, URISyntaxException {
-
-
+        WebDriver driver;
+        driver = Driver.getChromeDriver();
+//        driver.get("https://www.marvel.com/");
+//        driver.findElement(By.cssSelector("a[class=\"user-menu-tab sign-in\"]"))
+//                .click();
+//        //driver.switchTo().frame(driver.findElement(By.cssSelector("div[class=\"content ng-scope\"]")));
+//        //driver.findElement(By.xpath("//input[@type=\"email\"]")).isDisplayed();
+//        driver.findElement(By.cssSelector("div[class=\"field field-username-email badgeable\"]>div[class=\"message-error message no-height ng-isolate-scope\"]")).sendKeys("dfgfdgfdg");
+        MainPage mainPage = new MainPage(driver);
+        mainPage
+                .openMainPage()
+                 .clickSingUpButton();
+        driver.findElement(By.cssSelector("input[name=\"userName\"]")).sendKeys("sdfsdf");
+        String s = driver.findElement(By.cssSelector("input[name=\"userName\"]")).getAttribute("value");
+        System.out.println(s);
 
     }
 }

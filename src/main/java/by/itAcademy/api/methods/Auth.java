@@ -29,7 +29,7 @@ public class Auth {
 
     private static String fileNameWithExtension = "authToken.txt";
 
-    private static String getAuthTokenFromResponse() throws IOException, URISyntaxException {
+    public static String getAuthTokenFromResponse() throws IOException, URISyntaxException {
 
 
         List<NameValuePair> authParams = new ArrayList<>();
@@ -50,7 +50,7 @@ public class Auth {
         return authToken;
     }
 
-    private static String getAuthTokenFromFile() {
+    public static String getAuthTokenFromFile() {
         return FileHandler.readFile(path, fileNameWithExtension);
     }
 

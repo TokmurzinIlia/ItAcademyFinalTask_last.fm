@@ -11,25 +11,25 @@ public class MainPage {
 
     private WebDriver driver;
 
-    public static final By primaryNavigationMenu =
+    public static final By primaryNavigationMenuElement =
             By.cssSelector("ul[class=\"js-navlist-items navlist-items\"]>li[class=\"masthead-nav-item\"]");
 
-    public static final By siteAuthItemMenu =
+    public static final By siteAuthItemMenuElement =
             By.cssSelector("ul[class=\" site-auth site-auth--anon hidden-xs \"]>li[class=\"site-auth-item\"]");
 
-    public static final By companyMenu =
+    public static final By companyMenuElement =
             By.xpath("//h2[text()=\"Company\"]/..//li");
 
-    public static final By helpMenu =
+    public static final By helpMenuElement =
             By.xpath("//h2[text()=\"Help\"]/..//li");
 
-    public static final By goodiesMenu =
+    public static final By goodiesMenuElement =
             By.xpath("//h2[text()=\"Goodies\"]/..//li");
 
-    public static final By accountMenu =
+    public static final By accountMenuElement =
             By.xpath("//h2[text()=\"Account\"]/..//li");
 
-    public static final By followUsMenu =
+    public static final By followUsMenuElement =
             By.xpath("//h2[text()=\"Follow Us\"]/..//li");
 
     public static final By followUsFacebook =
@@ -54,8 +54,7 @@ public class MainPage {
         this.driver = driver;
     }
 
-    public MainPage  openMainPage()
-    {
+    public MainPage  openMainPage() {
         driver.get("https://www.last.fm");
         return this;
     }
@@ -64,12 +63,9 @@ public class MainPage {
         driver.findElement(selector).click();
     }
 
-    public void clickSingUpButton(){
-        driver.findElement(singUpButton).click();
-    }
+    public void clickSingUpButton(){ driver.findElement(singUpButton).click();}
 
     public List<String> getTextElementFromBlock(By selector){
-
 
         return driver.findElements(selector)
                 .stream()
