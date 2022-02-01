@@ -65,7 +65,7 @@ public class LastFMTest {
 
     @ParameterizedTest
     @ArgumentsSource(DataForSingUpValidationForm.class)
-    public void singUpFormValidation(List<String> selector,List<String> expectedList)  {
+    public void singUpFormValidation(List<By> selector,List<String> expectedList)  {
         SingUpPage singUpPage = new SingUpPage(driver);
 
         List<String> actualWebElementList =

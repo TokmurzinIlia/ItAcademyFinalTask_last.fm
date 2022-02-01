@@ -40,12 +40,12 @@ public class SingUpPage {
                 .collect(Collectors.toList());
     }
 
-    public void enterTextInSingUpFormPole(String selector, String text){
-       driver.findElement(By.cssSelector("input[name=\"" + selector + "\"]")).sendKeys(text);
+    public void enterTextInSingUpFormPole(By selector, String text){
+       driver.findElement(selector).sendKeys(text);
     }
 
-    public String getEnteredTextInSingUpFormField(String selector){
-        return driver.findElement(By.cssSelector("input[name=\"" + selector + "\"]")).getAttribute("value");
+    public String getEnteredTextInSingUpFormField(By selector){
+        return driver.findElement(selector).getAttribute("value");
     }
 
 
