@@ -1,4 +1,4 @@
-package lastFmTest.data;
+package testLastFm.data;
 
 import by.itAcademy.ui.pages.MainPage;
 import org.junit.jupiter.api.extension.ExtensionContext;

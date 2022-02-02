@@ -1,13 +1,13 @@
-package lastFmTest;
+package testLastFm.test;
 
 import by.itAcademy.ui.pages.MainPage;
 import by.itAcademy.ui.pages.SingUpPage;
 import by.itAcademy.utils.chromeDriver.Driver;
-import lastFmTest.data.DataForMainPageTextBlock;
-import lastFmTest.data.DataForSingUpValidationForm;
-import lastFmTest.data.DataForSocialNetworkLink;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import testLastFm.data.DataForMainPageTextBlock;
+import testLastFm.data.DataForSingUpValidationForm;
+import testLastFm.data.DataForSocialNetworkLink;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.openqa.selenium.By;
@@ -18,18 +18,18 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-public class LastFMTest {
+//@RunWith(JUnitPlatform.class)
+public class TestLastFM {
 
     private static WebDriver driver;
 
-    @BeforeEach
-    public void getDriver() {
+    @BeforeAll
+    public static void getDriver() {
         driver = Driver.getChromeDriver();
     }
 
-    @AfterEach
-    public void closeDriver(){
+    @AfterAll
+    public static void closeDriver(){
         Driver.quitDriver();
     }
 
@@ -77,7 +77,6 @@ public class LastFMTest {
         singUpPage.enterTextInSingUpFormPole(selector.get(i), expectedList.get(i));}
 
         List<String> actualEnteredTextList = new ArrayList<>();
-
 
         for (int i = 0; i < selector.size(); i++){
             actualEnteredTextList.add(singUpPage.getEnteredTextInSingUpFormField(selector.get(i)));}
