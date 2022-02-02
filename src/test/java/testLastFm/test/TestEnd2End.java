@@ -3,6 +3,7 @@ package testLastFm.test;
 import by.itAcademy.ui.pages.HomePage;
 import by.itAcademy.ui.pages.MainPage;
 import by.itAcademy.ui.pages.SingInPage;
+import by.itAcademy.ui.pages.UserPage;
 import by.itAcademy.utils.Property;
 import by.itAcademy.utils.chromeDriver.Driver;
 
@@ -44,6 +45,7 @@ public class TestEnd2End {
         MainPage mainPage = new MainPage(driver);
         SingInPage singInPage = new SingInPage(driver);
         HomePage homePage = new HomePage(driver);
+        UserPage userPage = new UserPage(driver);
 
         mainPage
                 .openMainPage()
@@ -52,15 +54,11 @@ public class TestEnd2End {
             singInPage
                     .logIn(Property.getPropertyValue("user"), Property.getPropertyValue("password"));
 
+        homePage.clickAvatar();
 
+        String actualName =  userPage.getUserName();
 
-        homePage.goToAvatar();
-
-        String s = driver.findElement(By.cssSelector("a[class=\"auth-dropdown-menu-item\"][href=\"/user/IliaTokmurzin\"]>strong"))
-                .getText();
-
-
-
-        assertEquals(s, Property.getPropertyValue("user"));
+        assertEquals(actualName, Property.getPropertyValue("user"));
     }
+
 }

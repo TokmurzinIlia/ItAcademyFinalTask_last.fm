@@ -3,6 +3,7 @@ import by.itAcademy.api.methods.Auth;
 import by.itAcademy.ui.pages.MainPage;
 
 import by.itAcademy.ui.pages.SingInPage;
+import by.itAcademy.ui.pages.UserPage;
 import by.itAcademy.utils.Property;
 import by.itAcademy.utils.chromeDriver.Driver;
 import org.openqa.selenium.By;
@@ -27,6 +28,7 @@ public class Main {
 //        //driver.findElement(By.xpath("//input[@type=\"email\"]")).isDisplayed();
 //        driver.findElement(By.cssSelector("div[class=\"field field-username-email badgeable\"]>div[class=\"message-error message no-height ng-isolate-scope\"]")).sendKeys("dfgfdgfdg");
         MainPage mainPage = new MainPage(driver);
+        UserPage userPage = new UserPage(driver);
         SingInPage singInPage = new SingInPage(driver);
         mainPage
                 .openMainPage()
@@ -34,11 +36,9 @@ public class Main {
         singInPage
                 .logIn(Property.getPropertyValue("user"), Property.getPropertyValue("password"));
 
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        userPage.openUserPage();
+
+
 
     }
 }
