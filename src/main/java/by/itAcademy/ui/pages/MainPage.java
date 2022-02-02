@@ -3,6 +3,7 @@ package by.itAcademy.ui.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -47,6 +48,13 @@ public class MainPage {
     private final By singUpButton =
             By.cssSelector("ul[class=\" site-auth site-auth--anon hidden-xs \"]>li>a[href=\"/join\"]");
 
+    private final By singInButton =
+            By.cssSelector("ul[class=\" site-auth site-auth--anon hidden-xs \"]>li>a[href=\"/login\"]");
+
+
+
+
+
 
 
     public MainPage(WebDriver driver)
@@ -64,6 +72,8 @@ public class MainPage {
     }
 
     public void clickSingUpButton(){ driver.findElement(singUpButton).click();}
+
+    public void clickSingInButton(){ driver.findElement(singInButton).click();}
 
     public List<String> getTextElementFromBlock(By selector){
 
