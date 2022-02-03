@@ -1,12 +1,11 @@
 
-import by.itAcademy.api.methods.Auth;
+import by.itAcademy.ui.blocks.HeaderBlock;
 import by.itAcademy.ui.pages.MainPage;
 
 import by.itAcademy.ui.pages.SingInPage;
 import by.itAcademy.ui.pages.UserPage;
 import by.itAcademy.utils.Property;
 import by.itAcademy.utils.chromeDriver.Driver;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 
@@ -27,16 +26,17 @@ public class Main {
 //        //driver.switchTo().frame(driver.findElement(By.cssSelector("div[class=\"content ng-scope\"]")));
 //        //driver.findElement(By.xpath("//input[@type=\"email\"]")).isDisplayed();
 //        driver.findElement(By.cssSelector("div[class=\"field field-username-email badgeable\"]>div[class=\"message-error message no-height ng-isolate-scope\"]")).sendKeys("dfgfdgfdg");
-        MainPage mainPage = new MainPage(driver);
-        UserPage userPage = new UserPage(driver);
-        SingInPage singInPage = new SingInPage(driver);
-        mainPage
-                .openMainPage()
-                .clickSingInButton();
-        singInPage
-                .logIn(Property.getPropertyValue("user"), Property.getPropertyValue("password"));
-
-        userPage.openUserPage();
+//       // MainPage mainPage = new MainPage(driver);
+//        UserPage userPage = new UserPage(driver);
+//        SingInPage singInPage = new SingInPage(driver);
+//        HeaderBlock headerBlock = new HeaderBlock();
+//        mainPage
+//                .openMainPage();
+//        headerBlock.clickSingInButton();
+//        singInPage
+//                .logIn(Property.getPropertyValue("user"), Property.getPropertyValue("password"));
+//
+//        //userPage.openUserPage();
 
 
 

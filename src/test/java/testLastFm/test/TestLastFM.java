@@ -37,7 +37,7 @@ public class TestLastFM {
     @ArgumentsSource(DataForMainPageTextBlock.class)
     public void checkElementPrimaryNavigationMenu(By selector, List<String> str, String name){
 
-        List<String> actualWebElementList = new MainPage(driver)
+        List<String> actualWebElementList = new MainPage()
                 .openMainPage()
                 .getTextElementFromBlock(selector);
 
@@ -49,24 +49,24 @@ public class TestLastFM {
     @ParameterizedTest(name = "{2}")
     @ArgumentsSource(DataForSocialNetworkLink.class)
     public void checkFacebookLinkURL(By selector, String expectedLink, String name) throws InterruptedException {
-        MainPage mainPage = new MainPage(driver);
+        MainPage mainPage = new MainPage();
 
         mainPage
                 .openMainPage()
                 .clickSocialNetworkLink(selector);
 
         ArrayList<String> tabs2 = new ArrayList<> (driver.getWindowHandles());
-        String url = driver.switchTo().window(tabs2.get(1)).getCurrentUrl();
+        String actualUrl = driver.switchTo().window(tabs2.get(1)).getCurrentUrl();
         driver.close();
         driver.switchTo().window(tabs2.get(0));
 
-        assertEquals(expectedLink, url);
+        assertEquals(expectedLink, actualUrl);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{index}")
     @ArgumentsSource(DataForSingUpValidationForm.class)
     public void singUpFormValidation(List<By> selector,List<String> expectedList)  {
-        SingUpPage singUpPage = new SingUpPage(driver);
+        SingUpPage singUpPage = new SingUpPage();
 
         List<String> actualWebElementList =
             singUpPage
