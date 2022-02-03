@@ -9,9 +9,6 @@ import by.itAcademy.utils.chromeDriver.Driver;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-
-import org.openqa.selenium.WebDriver;
 
 import java.io.IOException;
 
@@ -42,15 +39,17 @@ public class TestEnd2End {
                     .logIn(Property.getPropertyValue("user"),
                             Property.getPropertyValue("password"));
 
-        String actualURL = Driver.getChromeDriver().getCurrentUrl();
+        String actualURL = userPage.getCurrentUrl();
 
         headerBlock.clickAvatar();
 
-        String actualName =  userPage.getUserName();
+        String actualNameFromUserPage =  userPage.getUserName();
+        String actualNamesFromDropDownMenuAvatar =  headerBlock.getActualNamesFromDropDownMenuAvatar();
 
         assertAll(
                 () -> assertEquals(actualURL, actualURL),
-                () -> assertEquals(actualName, Property.getPropertyValue("user")));
+                () -> assertEquals(actualNamesFromDropDownMenuAvatar, Property.getPropertyValue("user")),
+                () -> assertEquals(actualNameFromUserPage, Property.getPropertyValue("user")));
 
     }
 

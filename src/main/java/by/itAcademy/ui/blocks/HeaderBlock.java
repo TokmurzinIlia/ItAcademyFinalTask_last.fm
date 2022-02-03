@@ -54,6 +54,10 @@ public class HeaderBlock {
         driver.findElement(avatar).click();
     }
 
+    public String getActualNamesFromDropDownMenuAvatar() {
+        return  driver.findElement(By.cssSelector("a[class=\"auth-dropdown-menu-item\"]>strong")).getText();
+    }
+
     public void goToAvatar(){
         Actions actions = new Actions(driver);
         WebElement avatarElement = driver.findElement(avatar);

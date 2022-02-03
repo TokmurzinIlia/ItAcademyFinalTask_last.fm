@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MainPage {
+public class MainPage extends BaseMethodPages {
 
 
     private final String mainPageURL = "https://www.last.fm";

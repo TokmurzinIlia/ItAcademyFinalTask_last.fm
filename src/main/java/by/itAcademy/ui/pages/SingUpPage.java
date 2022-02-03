@@ -5,10 +5,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SingUpPage extends AbstractPage{
+public class SingUpPage extends BaseMethodPages {
 
     private WebDriver driver = Driver.getChromeDriver();
 
@@ -46,5 +47,19 @@ public class SingUpPage extends AbstractPage{
         return driver.findElement(selector).getAttribute("value");
     }
 
+    public void addKeysInSingUpFormFields(List<By> selector, List<String> expectedList){
+
+        for (int i = 0; i < selector.size(); i++){
+        enterTextInSingUpFormPole(selector.get(i), expectedList.get(i));}
+}
+
+    public List<String> getActualEnteredTextList(List<By> selector) {
+        List<String> actualEnteredTextList = new ArrayList<>();
+
+        for (int i = 0; i < selector.size(); i++) {
+            actualEnteredTextList.add(getEnteredTextInSingUpFormField(selector.get(i)));
+        }
+
+    return actualEnteredTextList;}
 
 }

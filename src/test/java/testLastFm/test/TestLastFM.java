@@ -3,30 +3,23 @@ package testLastFm.test;
 import by.itAcademy.ui.pages.MainPage;
 import by.itAcademy.ui.pages.SingUpPage;
 import by.itAcademy.utils.chromeDriver.Driver;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
 import testLastFm.data.DataForMainPageTextBlock;
 import testLastFm.data.DataForSingUpValidationForm;
 import testLastFm.data.DataForSocialNetworkLink;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-//@RunWith(JUnitPlatform.class)
+@RunWith(JUnitPlatform.class)
 public class TestLastFM {
-
-    private static WebDriver driver;
-
-    @BeforeAll
-    public static void getDriver() {
-        driver = Driver.getChromeDriver();
-    }
 
     @AfterAll
     public static void closeDriver(){
@@ -35,13 +28,13 @@ public class TestLastFM {
 
     @ParameterizedTest(name = "{2}")
     @ArgumentsSource(DataForMainPageTextBlock.class)
-    public void checkElementPrimaryNavigationMenu(By selector, List<String> str, String name){
+    public void checkElementPrimaryNavigationMenu(By selector, List<String> expectedWebElements, String name){
 
         List<String> actualWebElementList = new MainPage()
                 .openMainPage()
                 .getTextElementFromBlock(selector);
 
-        List<String> expectedWebElementList = str;
+        List<String> expectedWebElementList = expectedWebElements;
 
         assertEquals(expectedWebElementList, actualWebElementList);
     }
@@ -55,10 +48,7 @@ public class TestLastFM {
                 .openMainPage()
                 .clickSocialNetworkLink(selector);
 
-        ArrayList<String> tabs2 = new ArrayList<> (driver.getWindowHandles());
-        String actualUrl = driver.switchTo().window(tabs2.get(1)).getCurrentUrl();
-        driver.close();
-        driver.switchTo().window(tabs2.get(0));
+        String actualUrl = mainPage.getCurrentUrlFromSecondTab();
 
         assertEquals(expectedLink, actualUrl);
     }
@@ -73,13 +63,9 @@ public class TestLastFM {
                 .openSingUpPage()
                 .getTextElementNameFromSingUpForm();
 
-        for (int i = 0; i < selector.size(); i++){
-        singUpPage.enterTextInSingUpFormPole(selector.get(i), expectedList.get(i));}
+        singUpPage.addKeysInSingUpFormFields(selector, expectedList);
 
-        List<String> actualEnteredTextList = new ArrayList<>();
-
-        for (int i = 0; i < selector.size(); i++){
-            actualEnteredTextList.add(singUpPage.getEnteredTextInSingUpFormField(selector.get(i)));}
+        List<String> actualEnteredTextList = singUpPage.getActualEnteredTextList(selector);
 
         assertAll(
                 () -> assertEquals(expectedList, actualWebElementList),

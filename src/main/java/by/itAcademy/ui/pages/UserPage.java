@@ -4,7 +4,7 @@ import by.itAcademy.utils.chromeDriver.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class UserPage {
+public class UserPage extends BaseMethodPages {
 
     private WebDriver driver = Driver.getChromeDriver();
 

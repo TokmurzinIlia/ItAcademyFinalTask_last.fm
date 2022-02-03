@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SingInPage extends AbstractPage{
+public class SingInPage extends BaseMethodPages {
 
     private WebDriver driver = Driver.getChromeDriver();
 
