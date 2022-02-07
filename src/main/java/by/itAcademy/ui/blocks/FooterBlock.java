@@ -1,8 +1,19 @@
 package by.itAcademy.ui.blocks;
 
+import by.itAcademy.ui.pages.BaseMethodPages;
+import by.itAcademy.utils.chromeDriver.Driver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
-public class FooterBlock {
+public class FooterBlock extends BaseMethodPages {
+
+    private WebDriver driver = Driver.getChromeDriver();
+
+    public FooterBlock() {
+    }
+
+    private final By logOutButton =
+            By.xpath("//button[contains( text(), \"Logout\")]");
     private final By companyMenuElement =
             By.xpath("//h2[text()=\"Company\"]/..//li");
 
@@ -29,6 +40,16 @@ public class FooterBlock {
 
     private final By followUsYouTube =
             By.xpath("//li/a[text()=\"YouTube\"]");
+
+    private final By settings = By.xpath("//div[@class=\"footer-top-col\"]//a[@href=\"/settings\"]");
+
+    public By getSettings() {
+        return settings;
+    }
+
+    public By getLogOutButton() {
+        return logOutButton;
+    }
 
     public By getCompanyMenuElement() {
         return companyMenuElement;

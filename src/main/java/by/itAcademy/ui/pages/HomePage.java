@@ -2,12 +2,10 @@ package by.itAcademy.ui.pages;
 
 
 import by.itAcademy.utils.chromeDriver.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 
 public class HomePage extends BaseMethodPages {
@@ -24,22 +22,10 @@ public class HomePage extends BaseMethodPages {
         this.driver = driver;
     }
 
+    @Step("Open home page")
     public HomePage  openHomePage() {
         driver.get(pageUrl);
         return this;
-    }
-
-    public HomePage goToAvatar(){
-
-
-        Actions actions = new Actions(driver);
-        WebElement avatarElement = driver.findElement(avatar);
-        actions.moveToElement(avatarElement).build().perform();
-        new WebDriverWait(driver, 10)
-                .until(ExpectedConditions
-                        .attributeToBe(avatar, "class", "auth-link auth-dropdown-toggle disclose-active"));
-        return this;
-
     }
 
 }

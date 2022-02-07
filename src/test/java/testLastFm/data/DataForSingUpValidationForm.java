@@ -10,11 +10,13 @@ import java.util.stream.Stream;
 
 public class DataForSingUpValidationForm implements ArgumentsProvider {
 
+    SingUpPage singUpPage = new SingUpPage();
+
     @Override
     public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) throws Exception {
         return Stream.of(
-                Arguments.of(Arrays.asList(SingUpPage.userNameSingUpFormInputField, SingUpPage.emailSingUpFormInputField,
-                        SingUpPage.passwordSingUpFormInputField, SingUpPage.confirmPasswordSingUpFormInputField),
+                Arguments.of(Arrays.asList(singUpPage.getUserNameSingUpFormInputField(), singUpPage.getEmailSingUpFormInputField(),
+                                singUpPage.getPasswordSingUpFormInputField(), singUpPage.getConfirmPasswordSingUpFormInputField()),
                         Arrays.asList("Username", "Email", "Password", "Confirm Password"), "checkElementPrimaryNavigationMenu"));
     }
 }

@@ -3,8 +3,7 @@ package testLastFm.test;
 import by.itAcademy.ui.pages.MainPage;
 import by.itAcademy.ui.pages.SingUpPage;
 import by.itAcademy.utils.chromeDriver.Driver;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
+
 import testLastFm.data.DataForMainPageTextBlock;
 import testLastFm.data.DataForSingUpValidationForm;
 import testLastFm.data.DataForSocialNetworkLink;
@@ -18,7 +17,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-@RunWith(JUnitPlatform.class)
+
 public class TestLastFM {
 
     @AfterAll
@@ -41,12 +40,12 @@ public class TestLastFM {
 
     @ParameterizedTest(name = "{2}")
     @ArgumentsSource(DataForSocialNetworkLink.class)
-    public void checkFacebookLinkURL(By selector, String expectedLink, String name) throws InterruptedException {
+    public void checkSocialNetworkLinkURL(By selector, String expectedLink, String name) {
         MainPage mainPage = new MainPage();
 
         mainPage
                 .openMainPage()
-                .clickSocialNetworkLink(selector);
+                .click(selector);
 
         String actualUrl = mainPage.getCurrentUrlFromSecondTab();
 
@@ -61,9 +60,9 @@ public class TestLastFM {
         List<String> actualWebElementList =
             singUpPage
                 .openSingUpPage()
-                .getTextElementNameFromSingUpForm();
+                .getTextElementFromBlock(singUpPage.getSingUpFormFieldsNames());
 
-        singUpPage.addKeysInSingUpFormFields(selector, expectedList);
+        singUpPage.addKeysInFormFields(selector, expectedList);
 
         List<String> actualEnteredTextList = singUpPage.getActualEnteredTextList(selector);
 

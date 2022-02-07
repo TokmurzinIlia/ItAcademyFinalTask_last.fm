@@ -1,6 +1,7 @@
 package by.itAcademy.ui.pages;
 
 import by.itAcademy.utils.chromeDriver.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -13,32 +14,10 @@ public class MainPage extends BaseMethodPages {
 
     private final String mainPageURL = "https://www.last.fm";
 
+    @Step("Open main page")
     public MainPage  openMainPage() {
         Driver.getChromeDriver().navigate().to(mainPageURL);
         return this;
     }
-
-    public void clickSocialNetworkLink(By selector){
-        Driver.getChromeDriver().findElement(selector).click();
-    }
-
-
-
-    public List<String> getTextElementFromBlock(By selector){
-
-        return Driver.getChromeDriver().findElements(selector)
-                .stream()
-                .map(WebElement::getText)
-                .collect(Collectors.toList());
-    }
-
-//    public List<String> getTextElementFollowUsMenu(){
-//
-//
-//        return driver.findElements(followUsMenu)
-//                .stream()
-//                .map(WebElement::getText)
-//                .collect(Collectors.toList());
-//    }
 
 }
