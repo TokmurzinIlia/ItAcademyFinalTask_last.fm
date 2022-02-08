@@ -1,4 +1,5 @@
 
+import by.itAcademy.api.methods.Auth;
 import by.itAcademy.ui.blocks.HeaderBlock;
 import by.itAcademy.ui.pages.MainPage;
 
@@ -18,25 +19,8 @@ import java.net.URISyntaxException;
 
 public class Main {
     public static void main(String[] args) throws IOException, URISyntaxException {
-        WebDriver driver;
-        driver = Driver.getChromeDriver();
-//        driver.get("https://www.marvel.com/");
-//        driver.findElement(By.cssSelector("a[class=\"user-menu-tab sign-in\"]"))
-//                .click();
-//        //driver.switchTo().frame(driver.findElement(By.cssSelector("div[class=\"content ng-scope\"]")));
-//        //driver.findElement(By.xpath("//input[@type=\"email\"]")).isDisplayed();
-//        driver.findElement(By.cssSelector("div[class=\"field field-username-email badgeable\"]>div[class=\"message-error message no-height ng-isolate-scope\"]")).sendKeys("dfgfdgfdg");
-//       // MainPage mainPage = new MainPage(driver);
-//        UserPage userPage = new UserPage(driver);
-//        SingInPage singInPage = new SingInPage(driver);
-//        HeaderBlock headerBlock = new HeaderBlock();
-//        mainPage
-//                .openMainPage();
-//        headerBlock.clickSingInButton();
-//        singInPage
-//                .logIn(Property.getPropertyValue("user"), Property.getPropertyValue("password"));
-//
-//        //userPage.openUserPage();
+
+        System.out.println(Auth.getAuthGetSession());
 
 
 

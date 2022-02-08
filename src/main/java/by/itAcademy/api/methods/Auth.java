@@ -3,6 +3,7 @@ package by.itAcademy.api.methods;
 import by.itAcademy.api.endpoints.EndPoints;
 import by.itAcademy.utils.FileHandler;
 import by.itAcademy.utils.Property;
+import by.itAcademy.utils.URIB;
 import by.itAcademy.utils.URIBuild;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.http.HttpResponse;
@@ -76,25 +77,30 @@ public class Auth {
 
 
     public static String getAuthGetSession() throws IOException, URISyntaxException {
-        String token = DigestUtils.md5Hex(getAuthTokenFromResponse());
-        String apiSig = "api_keyecf62d464eaf8f5ee50df045c9740ab81methodauth.getSessiond3934cd4a39360fe6f742c040bc4802";
+        //String token = getAuthTokenFromResponse();
+        String apiSig = "api_key" + Property.getPropertyValue("api_key") +
+                "methodauth.getMobileSession" + "password" + Property.getPropertyValue("password")
+                + "username" + Property.getPropertyValue("user") + Property.getPropertyValue("sc");
+        System.out.println(apiSig);
         String md5Hex = DigestUtils.md5Hex(apiSig);
+        System.out.println(md5Hex);
 
         List<NameValuePair> authParams = new ArrayList<>();
-
+        authParams.add(new BasicNameValuePair(EndPoints.PASSWORD, Property.getPropertyValue("password")));
+        authParams.add(new BasicNameValuePair(EndPoints.USER_NAME, "user"));
         authParams.add(new BasicNameValuePair(EndPoints.API_KEY_PARAMETER, Property.getPropertyValue("api_key")));
-        authParams.add(new BasicNameValuePair(EndPoints.TOKEN, token));
         authParams.add(new BasicNameValuePair("api_sig", md5Hex));
         authParams.add(new BasicNameValuePair(EndPoints.FORMAT_PARAMETER, "json"));
 
         HttpClient client = HttpClients.createDefault();
+        System.out.println(URIBuild.getURIInquiryGet(authParams));
         HttpGet httpGet = new HttpGet(URIBuild.getURIInquiryGet(authParams));
 
         HttpResponse response = client.execute(httpGet);
         String responseText = EntityUtils.toString(response.getEntity());
 
-//        JSONObject responseJson = new JSONObject(responseText);
-//        sk = responseJson.getString("key");
+        //JSONObject responseJson = new JSONObject(responseText);
+       // sk = responseJson.getString("key");
 
         return responseText;
     }

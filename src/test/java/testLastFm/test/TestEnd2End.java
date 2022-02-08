@@ -19,7 +19,6 @@ public class TestEnd2End {
     @AfterEach
 
     public void tearDown() {
-
         BaseMethodPages.checkLogOut();
     }
 
@@ -75,9 +74,9 @@ public class TestEnd2End {
         headerBlock.click(headerBlock.getSettingsFromDropDownMenuAvatar());
         settingsPage.addAvatar(settingsPage.getPATH_TO_AVATAR());
         settingsPage.click(settingsPage.getInputAvatarButton());
-        WebElement webElement = settingsPage.searchElement(settingsPage.getElementAcceptAvatar());
+        WebElement expectedElement = settingsPage.searchElement(settingsPage.getElementAcceptAvatar());
 
-        assertTrue(webElement.isDisplayed());
+        assertTrue(expectedElement.isDisplayed());
 
     }
 
@@ -107,9 +106,9 @@ public class TestEnd2End {
         settingsPage.sendKey(settingsPage.getAboutYouField(), "kjhgtyuirtyu");
         settingsPage.click(settingsPage.getSaveChangesUpdateProfileButton());
 
-        WebElement webElement = settingsPage.searchElement(settingsPage.getElementAcceptUserData());
+        WebElement expectedElement = settingsPage.searchElement(settingsPage.getElementAcceptUserData());
 
-        assertTrue(webElement.isDisplayed());
+        assertTrue(expectedElement.isDisplayed());
 
 
     }
