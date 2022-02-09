@@ -22,4 +22,15 @@ public class URIBuild {
 
         return builder.build();
     }
+
+    public static URI getURIInquiryGet() throws URISyntaxException {
+
+        URIBuilder builder = new URIBuilder();
+        builder
+                .setScheme(EndPoints.SCHEME)
+                .setHost(EndPoints.HOST)
+                .setPath(EndPoints.PATH);
+
+        return builder.build();
+    }
 }

@@ -1,5 +1,6 @@
 
 import by.itAcademy.api.methods.Auth;
+import by.itAcademy.api.methods.GetMethodsArtist;
 import by.itAcademy.ui.blocks.HeaderBlock;
 import by.itAcademy.ui.pages.MainPage;
 
@@ -20,7 +21,7 @@ import java.net.URISyntaxException;
 public class Main {
     public static void main(String[] args) throws IOException, URISyntaxException {
 
-        System.out.println(Auth.getAuthGetSession());
+        System.out.println(GetMethodsArtist.getTopAlbumsArtist("joesatriani", "3"));
 
 
 
