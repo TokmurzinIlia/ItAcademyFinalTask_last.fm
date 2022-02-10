@@ -6,12 +6,14 @@ import by.itAcademy.utils.chromeDriver.Driver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.security.Key;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +44,11 @@ public class BaseMethodPages {
         driver.findElement(selector).sendKeys(text);
         new WebDriverWait(driver,10)
                 .until(ExpectedConditions.attributeToBeNotEmpty(driver.findElement(selector), "value"));
+
+    }
+    @Step("Click ENTER")
+    public void sendKey(By selector, Keys key){
+        driver.findElement(selector).sendKeys(key);
 
     }
 
@@ -87,15 +94,23 @@ public class BaseMethodPages {
                 .collect(Collectors.toList());
     }
 
+    @Step("Log out")
+    public void logOut() {
+        HeaderBlock headerBlock = new HeaderBlock();
+        FooterBlock footerBlock = new FooterBlock();
+
+            footerBlock.searchElement(footerBlock.getLogOutButton()).click();
+            new WebDriverWait(Driver.getChromeDriver(), 10).until(ExpectedConditions.elementToBeClickable(
+                    headerBlock.searchElement(headerBlock.getSingInButton())));
+    }
+
     @Step("Checking out of the account and exiting it if it has not been done before")
-    public static void checkLogOut() {
+    public void checkLogOut() {
         HeaderBlock headerBlock = new HeaderBlock();
         FooterBlock footerBlock = new FooterBlock();
 
         if (headerBlock.elementIsNotPresent(headerBlock.getSingInButton())) {
-            footerBlock.searchElement(footerBlock.getLogOutButton()).click();
-            new WebDriverWait(Driver.getChromeDriver(), 10).until(ExpectedConditions.elementToBeClickable(
-                    headerBlock.searchElement(headerBlock.getSingInButton())));
+           logOut();
         }
     }
 

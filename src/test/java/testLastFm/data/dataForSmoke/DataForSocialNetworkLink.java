@@ -1,7 +1,6 @@
-package testLastFm.data;
+package testLastFm.data.dataForSmoke;
 
 import by.itAcademy.ui.blocks.FooterBlock;
-import by.itAcademy.ui.pages.MainPage;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;

@@ -20,6 +20,8 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.jsoup.nodes.Entities.unescape;
+
 public class Auth {
 
     private static String authToken;
@@ -82,7 +84,7 @@ public class Auth {
                 "methodauth.getMobileSession" + "password" + Property.getPropertyValue("password")
                 + "username" + Property.getPropertyValue("user") + Property.getPropertyValue("sc");
         System.out.println(apiSig);
-        String md5Hex = DigestUtils.md5Hex(apiSig);
+        String md5Hex = DigestUtils.md5Hex(unescape(apiSig));
         System.out.println(md5Hex);
 
 //        List<NameValuePair> authParams = new ArrayList<>();

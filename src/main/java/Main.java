@@ -21,7 +21,7 @@ import java.net.URISyntaxException;
 public class Main {
     public static void main(String[] args) throws IOException, URISyntaxException {
 
-        System.out.println(GetMethodsArtist.getTopAlbumsArtist("joesatriani", "3"));
+        System.out.println(Auth.getAuthGetSession());
 
 
 

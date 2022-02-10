@@ -1,4 +1,4 @@
-package testLastFm.data;
+package testLastFm.data.dataForSmoke;
 
 import by.itAcademy.ui.pages.SingUpPage;
 import org.junit.jupiter.api.extension.ExtensionContext;
@@ -17,6 +17,6 @@ public class DataForSingUpValidationForm implements ArgumentsProvider {
         return Stream.of(
                 Arguments.of(Arrays.asList(singUpPage.getUserNameSingUpFormInputField(), singUpPage.getEmailSingUpFormInputField(),
                                 singUpPage.getPasswordSingUpFormInputField(), singUpPage.getConfirmPasswordSingUpFormInputField()),
-                        Arrays.asList("Username", "Email", "Password", "Confirm Password"), "checkElementPrimaryNavigationMenu"));
+                        Arrays.asList("Username", "Email", "Password", "Confirm Password"), "Test that checks the main navigation menu"));
     }
 }

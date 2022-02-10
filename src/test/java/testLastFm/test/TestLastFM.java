@@ -4,9 +4,9 @@ import by.itAcademy.ui.pages.MainPage;
 import by.itAcademy.ui.pages.SingUpPage;
 import by.itAcademy.utils.chromeDriver.Driver;
 
-import testLastFm.data.DataForMainPageTextBlock;
-import testLastFm.data.DataForSingUpValidationForm;
-import testLastFm.data.DataForSocialNetworkLink;
+import testLastFm.data.dataForSmoke.DataForMainPageTextBlock;
+import testLastFm.data.dataForSmoke.DataForSingUpValidationForm;
+import testLastFm.data.dataForSmoke.DataForSocialNetworkLink;
 import org.junit.jupiter.api.AfterAll;
 
 import org.junit.jupiter.params.ParameterizedTest;
