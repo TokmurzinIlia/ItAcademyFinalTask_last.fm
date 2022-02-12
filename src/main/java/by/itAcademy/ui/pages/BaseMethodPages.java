@@ -13,7 +13,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.security.Key;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,8 +39,7 @@ public class BaseMethodPages {
     public void sendKey(By selector, String text){
 
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions
-                .elementToBeClickable(driver.findElement(selector)));
-        driver.findElement(selector).sendKeys(text);
+                .elementToBeClickable(driver.findElement(selector))).sendKeys(text);
         new WebDriverWait(driver,10)
                 .until(ExpectedConditions.attributeToBeNotEmpty(driver.findElement(selector), "value"));
 
@@ -70,8 +68,7 @@ public class BaseMethodPages {
 
     @Step("Click on an element {0}")
     public void click(By selector){
-        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(selector));
-        driver.findElement(selector).click();
+        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(selector)).click();
     }
 
     @Step("Search element {0}")
@@ -107,7 +104,6 @@ public class BaseMethodPages {
     @Step("Checking out of the account and exiting it if it has not been done before")
     public void checkLogOut() {
         HeaderBlock headerBlock = new HeaderBlock();
-        FooterBlock footerBlock = new FooterBlock();
 
         if (headerBlock.elementIsNotPresent(headerBlock.getSingInButton())) {
            logOut();

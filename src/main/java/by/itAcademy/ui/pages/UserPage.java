@@ -34,7 +34,7 @@ public class UserPage extends BaseMethodPages {
     private final By firstResultSearch =
             By.xpath("//tr[1]//button[@class=\"chartlist-action-button\"]");
     private final By songsFromPlayList =
-            By.cssSelector("td[role=\"button\"]");
+            By.cssSelector("td[tabindex=\"0\"]");
     private final By moreButtonFromFirstPlayList =
             By.xpath("//div[@class=\"buffer-4\"]//li[1]//button[@data-disclose-select]");
     private final By playLists =
@@ -73,19 +73,19 @@ public class UserPage extends BaseMethodPages {
     @Step("Add track in new play list from scratch")
     public void addTrackInNewPlayList(List<String> expectedList) throws InterruptedException {
 
-        for (int i = 0; i < expectedList.size(); i++){
-            if (driver.findElement(addTrackButtonInNewPlayList).isDisplayed()==false){
+        for (String s : expectedList) {
+            if (!driver.findElement(addTrackButtonInNewPlayList).isDisplayed()) {
                 click(addTrackButton);
-                sendKey(getSearchTrackField(), expectedList.get(i));
+                sendKey(getSearchTrackField(), s);
                 sendKey(getSearchTrackField(), Keys.ENTER);
                 click(getFirstResultSearch());
                 Thread.sleep(2000);
-            }
-            else {
+            } else {
                 click(addTrackButtonInNewPlayList);
-                sendKey(getSearchTrackField(), expectedList.get(i));
+                sendKey(getSearchTrackField(), s);
                 sendKey(getSearchTrackField(), Keys.ENTER);
-                click(getFirstResultSearch());}
+                click(getFirstResultSearch());
+            }
         }
     }
 
@@ -93,17 +93,17 @@ public class UserPage extends BaseMethodPages {
     public void deletePlayListByName(String name){
         WebElement playList = driver.findElement(By.cssSelector("a[title=\"" + name + "\"]"));
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(
-                playList));
-        playList.click();
+                playList)).click();
+
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(
-                driver.findElement((moreButtonFromThisPlayListPage))));
-        driver.findElement(moreButtonFromThisPlayListPage).click();
+                driver.findElement((moreButtonFromThisPlayListPage)))).click();
+
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(
-                driver.findElement((deleteButtonFromThisPlayListPage))));
-        driver.findElement(deleteButtonFromThisPlayListPage).click();
+                driver.findElement((deleteButtonFromThisPlayListPage)))).click();
+
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(
-                driver.findElement((deleteButtonFromDataModalAction))));
-        driver.findElement(deleteButtonFromDataModalAction).click();
+                driver.findElement((deleteButtonFromDataModalAction)))).click();
+
 
 
     }
