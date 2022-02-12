@@ -16,7 +16,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class Steps {
+public class StepGetTopAlbum {
 private List<String> actualTopAlbum;
     @Given("User is sends a get request to get the numbers top albums artists on following parameters.")
     public List<String> userPreparesGetRequestForBasedOnFollowingParameters(DataTable dataTable) throws IOException, URISyntaxException {
