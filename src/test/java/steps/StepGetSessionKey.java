@@ -14,6 +14,7 @@ import io.cucumber.java.en.When;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -35,9 +36,9 @@ public class StepGetSessionKey {
         return response = Auth.getAuthTokenFromResponse();
     }
 
-    @Then("^User get response status code is \"([^\"]*)\"$")
-    public void responseCode(String expectedStatusCode){
-        String statusCode = Auth.responseCode(response);
+    @Then("^User get response status code is (\\d+)$")
+    public void responseCode(int expectedStatusCode){
+        int statusCode = Integer.parseInt(Auth.responseCode(response));
         assertEquals(expectedStatusCode, statusCode);
     }
 
@@ -48,7 +49,7 @@ public class StepGetSessionKey {
         return authToken;
     }
 
-    @And("^User write token in file \"([^\"]*)\"$")
+    @And("User write token in file \"([^\"]*)\"$")
     public void userWriteTokenInFileSessionKeyTxt(String fileName) throws IOException {
         Auth.writeToFile(authToken, fileName);
         String actualTokenFromFile = FileHandler.readFile(Auth.getPath(), fileName);
@@ -80,8 +81,8 @@ public class StepGetSessionKey {
 
     @And("User close browser")
     public void userCloseBrowser() {
-        driver = Driver.quitDriver();
-        assertNull(driver);
+        Driver.quitDriver();
+        assertThrows(NoSuchSessionException.class, () -> driver.getCurrentUrl());
     }
 
     @Then("User is sends a get request to get the session")

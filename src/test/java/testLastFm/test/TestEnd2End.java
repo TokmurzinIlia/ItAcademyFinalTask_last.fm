@@ -1,10 +1,12 @@
 package testLastFm.test;
 
 import by.itAcademy.ui.blocks.HeaderBlock;
-import by.itAcademy.ui.pages.*;
+import by.itAcademy.ui.pages.MainPage;
+import by.itAcademy.ui.pages.SettingsPage;
+import by.itAcademy.ui.pages.SingInPage;
+import by.itAcademy.ui.pages.UserPage;
 import by.itAcademy.utils.Property;
 import by.itAcademy.utils.chromeDriver.Driver;
-
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
@@ -12,13 +14,13 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.openqa.selenium.WebElement;
 import testLastFm.data.dataForEnd2End.DataForAddNewPlayList;
 
-
 import java.io.IOException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestEnd2End {
+
 
     @AfterEach
 

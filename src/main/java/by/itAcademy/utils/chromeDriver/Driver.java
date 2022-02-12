@@ -26,9 +26,9 @@ public class Driver {
         return driver;
     }
 
-    public static WebDriver quitDriver() {
+    public static void quitDriver() {
         driver.quit();
-        return null;
+        driver = null;
     }
 
 }

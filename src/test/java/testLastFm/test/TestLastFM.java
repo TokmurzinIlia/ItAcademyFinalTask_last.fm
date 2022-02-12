@@ -3,15 +3,13 @@ package testLastFm.test;
 import by.itAcademy.ui.pages.MainPage;
 import by.itAcademy.ui.pages.SingUpPage;
 import by.itAcademy.utils.chromeDriver.Driver;
-
-import testLastFm.data.dataForSmoke.DataForMainPageTextBlock;
-import testLastFm.data.dataForSmoke.DataForSingUpValidationForm;
-import testLastFm.data.dataForSmoke.DataForSocialNetworkLink;
 import org.junit.jupiter.api.AfterAll;
-
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.openqa.selenium.By;
+import testLastFm.data.dataForSmoke.DataForMainPageTextBlock;
+import testLastFm.data.dataForSmoke.DataForSingUpValidationForm;
+import testLastFm.data.dataForSmoke.DataForSocialNetworkLink;
 
 import java.util.List;
 
@@ -22,7 +20,7 @@ public class TestLastFM {
 
     @AfterAll
     public static void closeDriver(){
-        Driver.quitDriver();
+       Driver.quitDriver();
     }
 
     @ParameterizedTest(name = "{2}")

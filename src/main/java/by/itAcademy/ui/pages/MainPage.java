@@ -2,12 +2,6 @@ package by.itAcademy.ui.pages;
 
 import by.itAcademy.utils.chromeDriver.Driver;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class MainPage extends BaseMethodPages {
 
