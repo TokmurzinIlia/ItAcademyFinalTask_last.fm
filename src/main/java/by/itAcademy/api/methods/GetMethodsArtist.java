@@ -6,6 +6,7 @@ import by.itAcademy.api.pojo.topalbum.Topalbums;
 import by.itAcademy.utils.Property;
 import by.itAcademy.utils.URIBuild;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.qameta.allure.Step;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -21,7 +22,7 @@ import java.util.List;
 
 public class GetMethodsArtist {
 
-
+    @Step("Get top albums artist")
     public static List<String> getTopAlbumsArtist(String name, String limitAlbum) throws IOException, URISyntaxException {
 
 
