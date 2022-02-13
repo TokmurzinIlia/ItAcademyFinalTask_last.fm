@@ -5,6 +5,7 @@ import by.itAcademy.ui.pages.MainPage;
 import by.itAcademy.ui.pages.SettingsPage;
 import by.itAcademy.ui.pages.SingInPage;
 import by.itAcademy.ui.pages.UserPage;
+import by.itAcademy.utils.Log;
 import by.itAcademy.utils.Property;
 import by.itAcademy.utils.chromeDriver.Driver;
 import org.junit.jupiter.api.*;
@@ -44,25 +45,28 @@ public class TestEnd2End {
         HeaderBlock headerBlock = new HeaderBlock();
 
         mainPage.openMainPage();
+        Log.info("Main page opened");
 
         headerBlock.clickSingInButton();
-
+        Log.info("Clicked sing in button");
         singInPage
                     .logIn(Property.getPropertyValue("user"),
                             Property.getPropertyValue("password"));
-
+        Log.info("Account logged in");
         String actualURL = userPage.getCurrentUrl();
-
+        Log.info("Taken current URL");
         headerBlock.clickAvatar();
-
+        Log.info("Avatar has been clicked");
         String actualNameFromUserPage =  userPage.getUserName();
+        Log.info("Taken actual name from user page");
         String actualNamesFromDropDownMenuAvatar =  headerBlock.getActualNamesFromDropDownMenuAvatar();
-
+        Log.info("Taken actual name from drop down menu avatar");
         assertAll(
-                () -> assertEquals(actualURL, actualURL),
-                () -> assertEquals(actualNamesFromDropDownMenuAvatar, Property.getPropertyValue("user")),
-                () -> assertEquals(actualNameFromUserPage, Property.getPropertyValue("user")));
+                () -> assertEquals("https://www.last.fm/home", actualURL),
+                () -> assertEquals(Property.getPropertyValue("user"), actualNamesFromDropDownMenuAvatar),
+                () -> assertEquals(Property.getPropertyValue("user"), actualNameFromUserPage));
         userPage.logOut();
+        Log.info("log out made");
     }
 
     @Order(2)
@@ -169,7 +173,7 @@ public class TestEnd2End {
         int quantityAfterRemoval = userPage.getTextElementFromBlock(userPage.getPlayLists()).size();
         int difference = quantityBeforeRemoval - quantityAfterRemoval;
 
-        assertEquals(difference, 1);
+        assertEquals( 1, difference);
 
         userPage.logOut();
     }
