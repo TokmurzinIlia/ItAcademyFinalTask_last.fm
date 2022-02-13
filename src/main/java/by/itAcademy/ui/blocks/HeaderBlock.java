@@ -17,7 +17,7 @@ public class HeaderBlock extends BaseMethodPages {
     }
 
     private final By primaryNavigationMenuElement =
-            By.cssSelector("ul[class=\"js-navlist-items navlist-items\"]>li[class=\"masthead-nav-item\"]");
+            By.xpath("//ul[@class=\"js-navlist-items navlist-items\"]/li[@class=\"masthead-nav-item\"]");
 
     private  final By siteAuthItemMenuElement =
             By.cssSelector("ul[class=\" site-auth site-auth--anon hidden-xs \"]>li[class=\"site-auth-item\"]");
