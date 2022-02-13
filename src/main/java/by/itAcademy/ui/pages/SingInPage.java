@@ -4,8 +4,6 @@ import by.itAcademy.utils.chromeDriver.Driver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SingInPage extends BaseMethodPages {
 
@@ -32,8 +30,7 @@ public class SingInPage extends BaseMethodPages {
 
         driver.findElement(usernameOrEmailField).sendKeys(usernameOrEmail);
         driver.findElement(passwordField).sendKeys(password);
-        new WebDriverWait(driver,10)
-                .until(ExpectedConditions.attributeToBeNotEmpty(driver.findElement(passwordField), "value"));
+        waiter.waitUntilAttributeToBeNotEmpty(driver.findElement(passwordField), "value");
         driver.findElement(letMeInButton).click();
 
 

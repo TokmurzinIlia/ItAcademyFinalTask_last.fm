@@ -88,10 +88,8 @@ public class Auth {
 
         String apiSig = "api_key" + Property.getPropertyValue("api_key") +
                 "method" +"auth.getSession" + "token" + token + Property.getPropertyValue("sc");
-        System.out.println(token);
-        System.out.println(apiSig);
+
         String md5Hex = DigestUtils.md5Hex(unescape(apiSig));
-        System.out.println(md5Hex);
 
 
         authParams.add(new BasicNameValuePair(EndPoints.TOKEN, token));

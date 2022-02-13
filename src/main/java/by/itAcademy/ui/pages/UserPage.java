@@ -1,19 +1,20 @@
 package by.itAcademy.ui.pages;
 
+import by.itAcademy.utils.Waiter;
 import by.itAcademy.utils.chromeDriver.Driver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
 public class UserPage extends BaseMethodPages {
 
     private WebDriver driver = Driver.getChromeDriver();
+
+    Waiter waiter = new Waiter();
 
     private final By userNameFromPage = By.cssSelector("h1[class=\"header-title\"]");
     private final By headerAvatar = By.cssSelector("div[class=\"header-avatar\"]");
@@ -92,17 +93,16 @@ public class UserPage extends BaseMethodPages {
     @Step("Delete playlist by name")
     public void deletePlayListByName(String name){
         WebElement playList = driver.findElement(By.cssSelector("a[title=\"" + name + "\"]"));
-        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(
+        waiter.waitUntilElementToBeClickable((
                 playList)).click();
 
-        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(
-                driver.findElement((moreButtonFromThisPlayListPage)))).click();
+        waiter.waitUntilElementToBeClickable(
+                driver.findElement((moreButtonFromThisPlayListPage))).click();
 
-        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(
-                driver.findElement((deleteButtonFromThisPlayListPage)))).click();
+        waiter.waitUntilElementToBeClickable(
+                driver.findElement((deleteButtonFromThisPlayListPage))).click();
 
-        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(
-                driver.findElement((deleteButtonFromDataModalAction)))).click();
+        waiter.waitUntilElementToBeClickable(driver.findElement((deleteButtonFromDataModalAction))).click();
 
 
 

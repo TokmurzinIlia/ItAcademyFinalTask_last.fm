@@ -1,27 +1,22 @@
-
 import by.itAcademy.api.methods.Auth;
-;
+import by.itAcademy.api.methods.TrackUnLove;
 import by.itAcademy.api.pojo.getSession.LFM;
 import by.itAcademy.api.pojo.getSession.Session;
-import by.itAcademy.api.pojo.topalbum.Root;
-import by.itAcademy.api.pojo.topalbum.Topalbums;
 import by.itAcademy.ui.pages.SingInPage;
 import by.itAcademy.utils.Property;
 import by.itAcademy.utils.chromeDriver.Driver;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import netscape.javascript.JSObject;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
-import org.json.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-
 import java.io.IOException;
-
 import java.net.URISyntaxException;
+
+;
 
 
 
@@ -55,7 +50,7 @@ public class Main {
 
         System.out.println(sessionKey);
         Auth.writeToFile(sessionKey, "sessionKey.txt");
-
+        TrackUnLove.postTrackUnLove("masterpiece", "madonna");
 
 
     }

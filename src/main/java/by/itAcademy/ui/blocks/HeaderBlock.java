@@ -2,16 +2,17 @@ package by.itAcademy.ui.blocks;
 
 import by.itAcademy.ui.pages.BaseMethodPages;
 import by.itAcademy.ui.pages.UserPage;
+import by.itAcademy.utils.Waiter;
 import by.itAcademy.utils.chromeDriver.Driver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HeaderBlock extends BaseMethodPages {
 
     private WebDriver driver = Driver.getChromeDriver();
+
+    Waiter waiter = new Waiter();
 
     public HeaderBlock() {
     }
@@ -69,7 +70,7 @@ public class HeaderBlock extends BaseMethodPages {
     public void clickAvatar(){
         UserPage userPage = new UserPage();
         driver.findElement(avatar).click();
-        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(userPage.getUserNameFromPage()));
+        waiter.waitUntilElementToBeClickable((userPage.getUserNameFromPage()));
     }
 
     @Step("Get actual names from drop-down menu avatar")

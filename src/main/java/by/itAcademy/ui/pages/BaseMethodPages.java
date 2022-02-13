@@ -2,10 +2,10 @@ package by.itAcademy.ui.pages;
 
 import by.itAcademy.ui.blocks.FooterBlock;
 import by.itAcademy.ui.blocks.HeaderBlock;
+import by.itAcademy.utils.Waiter;
 import by.itAcademy.utils.chromeDriver.Driver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,7 +13,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,6 +20,8 @@ import java.util.stream.Collectors;
 public class BaseMethodPages {
 
     private WebDriver driver = Driver.getChromeDriver();
+
+    Waiter waiter = new Waiter();
 
     public String getCurrentUrl(){
         return driver.getCurrentUrl();
@@ -38,10 +39,8 @@ public class BaseMethodPages {
     @Step("Enter text {1} in the field {0}")
     public void sendKey(By selector, String text){
 
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions
-                .elementToBeClickable(driver.findElement(selector))).sendKeys(text);
-        new WebDriverWait(driver,10)
-                .until(ExpectedConditions.attributeToBeNotEmpty(driver.findElement(selector), "value"));
+        waiter.waitUntilElementToBeClickable((selector)).sendKeys(text);
+        waiter.waitUntilAttributeToBeNotEmpty(driver.findElement(selector), "value");
 
     }
     @Step("Click ENTER")
@@ -52,23 +51,21 @@ public class BaseMethodPages {
 
     @Step("Clear input field {0}")
     public void clear(By selector){
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions
-                .elementToBeClickable(driver.findElement(selector))).clear();
+       waiter.waitUntilElementToBeClickable((selector)).clear();
 
 
     }
 
     @Step("Select a field {1} from the dropdown list {0}")
     public void setValueFromSelect(By selector, String text){
-        new WebDriverWait(driver, 10).until(ExpectedConditions
-                .elementToBeClickable(driver.findElement(selector)));
+        waiter.waitUntilElementToBeClickable((selector));
         Select select = new Select(driver.findElement(selector));
         select.selectByVisibleText(text);
     }
 
     @Step("Click on an element {0}")
     public void click(By selector){
-        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(selector)).click();
+        waiter.waitUntilElementToBeClickable((selector)).click();
     }
 
     @Step("Search element {0}")
@@ -97,8 +94,7 @@ public class BaseMethodPages {
         FooterBlock footerBlock = new FooterBlock();
 
             footerBlock.searchElement(footerBlock.getLogOutButton()).click();
-            new WebDriverWait(Driver.getChromeDriver(), 10).until(ExpectedConditions.elementToBeClickable(
-                    headerBlock.searchElement(headerBlock.getSingInButton())));
+        waiter.waitUntilElementToBeClickable(headerBlock.searchElement(headerBlock.getSingInButton()));
     }
 
     @Step("Checking out of the account and exiting it if it has not been done before")

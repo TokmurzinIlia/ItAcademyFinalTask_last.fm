@@ -4,8 +4,6 @@ import by.itAcademy.utils.chromeDriver.Driver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SettingsPage extends BaseMethodPages {
 
@@ -67,7 +65,7 @@ public class SettingsPage extends BaseMethodPages {
     @Step("Upload avatar located at absolute path {0}")
     public void addAvatar(String text){
 
-        new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(inputAvatar));
+       waiter.waitPresenceOfAllElementsLocatedBy(inputAvatar);
         driver.findElement(inputAvatar).sendKeys(text);
 
     }
