@@ -64,7 +64,8 @@ public class HeaderBlock extends BaseMethodPages {
     public void clickSingUpButton(){ driver.findElement(singUpButton).click();}
 
     @Step("Click sing in button")
-    public void clickSingInButton(){ driver.findElement(singInButton).click();}
+    public void clickSingInButton(){ 
+        waiter.waitUntilElementToBeClickable(driver.findElement(singInButton)).click();}
 
     @Step("Click avatar")
     public void clickAvatar(){
