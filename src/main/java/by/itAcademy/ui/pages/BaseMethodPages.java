@@ -84,7 +84,7 @@ public class BaseMethodPages {
 
     @Step("Get text elements from block {0} and put into list")
     public List<String> getTextElementFromBlock(By selector){
-
+        new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(selector));
         return Driver.getChromeDriver().findElements(selector)
                 .stream()
                 .map(WebElement::getText)
