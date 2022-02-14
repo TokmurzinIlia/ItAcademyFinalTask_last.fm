@@ -8,6 +8,10 @@ import by.itAcademy.ui.pages.UserPage;
 import by.itAcademy.utils.Log;
 import by.itAcademy.utils.Property;
 import by.itAcademy.utils.chromeDriver.Driver;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
@@ -35,6 +39,10 @@ public class TestEnd2End {
         Driver.quitDriver();
     }
 
+    @Severity(SeverityLevel.BLOCKER)
+    @Description("Login test")
+    @Feature("Login test")
+    @DisplayName("Login test")
     @Order(1)
     @Test
     public void logInTest() throws IOException {
@@ -69,6 +77,10 @@ public class TestEnd2End {
         Log.info("log out made");
     }
 
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Test that checks for avatar updates")
+    @Feature("Test that checks for avatar updates")
+    @DisplayName("Test that checks for avatar updates")
     @Order(2)
     @Test
     public void updateAvatarTest() throws IOException {
@@ -94,6 +106,10 @@ public class TestEnd2End {
         settingsPage.logOut();
     }
 
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Test that checks for update profile")
+    @Feature("Test that checks for update profile")
+    @DisplayName("Test that checks for update profile")
     @Order(3)
     @ParameterizedTest
     @CsvSource({"Ilia, Belarus, http://www.iliatokmurzin.com, Hello. My name is Ilia"})
@@ -127,6 +143,10 @@ public class TestEnd2End {
         settingsPage.logOut();
     }
 
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Test that checks for adding tracks to a new playlist")
+    @Feature("Test that checks for adding tracks to a new playlist")
+    @DisplayName("Test that checks for adding tracks to a new playlist")
     @Order(4)
     @ParameterizedTest
     @ArgumentsSource(DataForAddNewPlayList.class)
@@ -153,6 +173,10 @@ public class TestEnd2End {
         userPage.logOut();
     }
 
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Test that checks for deleting a playlist by name")
+    @Feature("Test that checks for deleting a playlist by name")
+    @DisplayName("Test that checks for deleting a playlist by name")
     @Order(5)
     @ParameterizedTest
     @CsvSource("My New Playlist")
