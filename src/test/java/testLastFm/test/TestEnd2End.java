@@ -8,10 +8,7 @@ import by.itAcademy.ui.pages.UserPage;
 import by.itAcademy.utils.Log;
 import by.itAcademy.utils.Property;
 import by.itAcademy.utils.chromeDriver.Driver;
-import io.qameta.allure.Description;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
@@ -143,6 +140,7 @@ public class TestEnd2End {
         settingsPage.logOut();
     }
 
+    @Flaky
     @Severity(SeverityLevel.NORMAL)
     @Description("Test that checks for adding tracks to a new playlist")
     @Feature("Test that checks for adding tracks to a new playlist")

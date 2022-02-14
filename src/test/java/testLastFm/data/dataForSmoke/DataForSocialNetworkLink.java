@@ -19,7 +19,7 @@ public class DataForSocialNetworkLink implements ArgumentsProvider {
                 Arguments.of(footerBlock.getFollowUsTwitter(),
                         "https://twitter.com/lastfm", "checkLinkTwitter"),
                 Arguments.of(footerBlock.getFollowUsInstagram(),
-                        "https://www.instagram.com/accounts/login/?next=/last_fm/", "checkLinkInstagram"),
+                        "https://www.instagram.com/last_fm/", "checkLinkInstagram"),
                 Arguments.of(footerBlock.getFollowUsYouTube(),
                         "https://www.youtube.com/user/lastfm", "checkLinkYoutube"));
     }
