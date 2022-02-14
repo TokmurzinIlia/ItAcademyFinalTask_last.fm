@@ -80,7 +80,7 @@ public class BaseMethodPages {
     @Step("Get text elements from block {0} and put into list")
     public List<String> getTextElementFromBlock(By selector){
 
-        return Driver.getChromeDriver().findElements(selector)
+        return driver.findElements(selector)
                 .stream()
                 .map(WebElement::getText)
                 .collect(Collectors.toList());
