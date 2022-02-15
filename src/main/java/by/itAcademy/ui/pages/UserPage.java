@@ -80,7 +80,7 @@ public class UserPage extends BaseMethodPages {
                 sendKey(getSearchTrackField(), s);
                 sendKey(getSearchTrackField(), Keys.ENTER);
                 click(getFirstResultSearch());
-                Thread.sleep(2000);
+                Thread.sleep(3000);
             } else {
                 click(addTrackButtonInNewPlayList);
                 sendKey(getSearchTrackField(), s);
