@@ -1,6 +1,6 @@
 package by.itAcademy.api.methods;
 
-import by.itAcademy.api.endpoints.EndPoints;
+import by.itAcademy.api.endpoints.Constant;
 import by.itAcademy.api.pojo.topalbum.Root;
 import by.itAcademy.api.pojo.topalbum.Topalbums;
 import by.itAcademy.utils.Property;
@@ -27,11 +27,11 @@ public class GetMethodsArtist {
 
 
         List<NameValuePair> authParams = new ArrayList<>();
-        authParams.add(new BasicNameValuePair(EndPoints.METHOD_PARAMETER, "artist.getTopAlbums"));
+        authParams.add(new BasicNameValuePair(Constant.METHOD_PARAMETER, "artist.getTopAlbums"));
         authParams.add(new BasicNameValuePair("artist", name));
         authParams.add(new BasicNameValuePair("limit", limitAlbum));
-        authParams.add(new BasicNameValuePair(EndPoints.API_KEY_PARAMETER, Property.getPropertyValue("api_key")));
-        authParams.add(new BasicNameValuePair(EndPoints.FORMAT_PARAMETER, "json"));
+        authParams.add(new BasicNameValuePair(Constant.API_KEY_PARAMETER, Property.getPropertyValue("api_key")));
+        authParams.add(new BasicNameValuePair(Constant.FORMAT_PARAMETER, "json"));
 
         HttpClient client = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet(URIBuild.getURIInquiryGet(authParams));

@@ -1,6 +1,6 @@
 package by.itAcademy.api.methods;
 
-import by.itAcademy.api.endpoints.EndPoints;
+import by.itAcademy.api.endpoints.Constant;
 import by.itAcademy.utils.FileHandler;
 import by.itAcademy.utils.Property;
 import by.itAcademy.utils.URIBuild;
@@ -38,11 +38,11 @@ public class TrackUnLove {
 
         authParams.add(new BasicNameValuePair("track", track));
         authParams.add(new BasicNameValuePair("artist", artist));
-        authParams.add(new BasicNameValuePair(EndPoints.API_KEY_PARAMETER, Property.getPropertyValue("api_key")));
+        authParams.add(new BasicNameValuePair(Constant.API_KEY_PARAMETER, Property.getPropertyValue("api_key")));
         authParams.add(new BasicNameValuePair("api_sig", md5Hex));
         authParams.add(new BasicNameValuePair("sk", sk));
-        authParams.add(new BasicNameValuePair(EndPoints.METHOD_PARAMETER, "track.unlove"));
-        authParams.add(new BasicNameValuePair(EndPoints.FORMAT_PARAMETER, "json"));
+        authParams.add(new BasicNameValuePair(Constant.METHOD_PARAMETER, "track.unlove"));
+        authParams.add(new BasicNameValuePair(Constant.FORMAT_PARAMETER, "json"));
 //        HttpClient client = HttpClients.createDefault();
 //        HttpPost tokenRequest = new HttpPost(applicationUrl+"oauth/token");
 //        tokenRequest.addHeader("Authorization", "Basic d2ViYXBwOg==");

@@ -1,6 +1,6 @@
 package by.itAcademy.api.endpoints;
 
-public class EndPoints {
+public class Constant {
     public static final String SCHEME = "http";
     public static final String HOST = "ws.audioscrobbler.com";
     public static final String PATH = "/2.0";
@@ -11,6 +11,4 @@ public class EndPoints {
     public static final String PASSWORD = "password ";
     public static final String USER_NAME = "username";
     public static final String SESSION_KEY = "sk";
-
-
 }

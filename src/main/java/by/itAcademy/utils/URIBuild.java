@@ -1,6 +1,6 @@
 package by.itAcademy.utils;
 
-import by.itAcademy.api.endpoints.EndPoints;
+import by.itAcademy.api.endpoints.Constant;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URIBuilder;
 
@@ -15,9 +15,9 @@ public class URIBuild {
 
         URIBuilder builder = new URIBuilder();
         builder
-                .setScheme(EndPoints.SCHEME)
-                .setHost(EndPoints.HOST)
-                .setPath(EndPoints.PATH)
+                .setScheme(Constant.SCHEME)
+                .setHost(Constant.HOST)
+                .setPath(Constant.PATH)
                 .addParameters(authParams);
 
         return builder.build();
@@ -27,9 +27,9 @@ public class URIBuild {
 
         URIBuilder builder = new URIBuilder();
         builder
-                .setScheme(EndPoints.SCHEME)
-                .setHost(EndPoints.HOST)
-                .setPath(EndPoints.PATH);
+                .setScheme(Constant.SCHEME)
+                .setHost(Constant.HOST)
+                .setPath(Constant.PATH);
 
         return builder.build();
     }
