@@ -29,8 +29,6 @@ public class StepGetTopArtistFromChart {
     @Then("^The list of top chart artists obtained from the query is equivalent to the desired one$")
     public void theListOfTopChartArtistsObtainedFromTheQueryIsEquivalentToTheDesiredOne(List<String> expectedList) throws IOException {
         List<String> actualList = ChartGetTopArtist.extractNameTopArtists(response);
-        System.out.println(expectedList);
-        System.out.println(actualList);
         assertEquals(expectedList,actualList);
     }
 }

@@ -1,13 +1,7 @@
-import by.itAcademy.api.methods.ChartGetTopArtist;
-import by.itAcademy.api.pojo.chartGetTopArtist.Artists;
-import by.itAcademy.api.pojo.chartGetTopArtist.Root;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.http.HttpResponse;
-import org.apache.http.util.EntityUtils;
+import by.itAcademy.api.methods.TrackUnLove;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.List;
 
 
 public class Main {
@@ -40,19 +34,7 @@ public class Main {
 //
 //        System.out.println(sessionKey);
 //        Auth.writeToFile(sessionKey, "sessionKey.txt");
-//        TrackUnLove.postTrackUnLove("masterpiece", "madonna");
-
-        HttpResponse response = ChartGetTopArtist.getChartGetTopArtist("5");
-
-        String responseText = EntityUtils.toString(response.getEntity());
-
-        ObjectMapper om = new ObjectMapper();
-        Root root = om.readValue(responseText, Root.class);
-        Artists str = root.getArtists();
-        List<String> actualAlbumName = str.getNameArtist();
-        System.out.println(actualAlbumName);
-
-
+        TrackUnLove.postTrackUnLove("masterpiece", "madonna");
 
     }
 }
