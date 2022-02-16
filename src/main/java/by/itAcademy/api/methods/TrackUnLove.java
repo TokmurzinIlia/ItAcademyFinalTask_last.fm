@@ -18,6 +18,7 @@ import org.apache.http.util.EntityUtils;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,19 +31,27 @@ public class TrackUnLove {
         String sk = FileHandler.readFile(Auth.getPath(), "sessionKey.txt");
         List<NameValuePair> authParams = new ArrayList<>();
 
-        String apiSig = "api_key" + Property.getPropertyValue("api_key") +
-                "method" +"track.unlove" + "token" + token + Property.getPropertyValue("sc");
+        String apiSig =  "api_key" + Property.getPropertyValue("api_key") +
+                "method" +"track.unlove"+ "track" + track +"artist" + artist + Property.getPropertyValue("sc");
 
         String md5Hex = DigestUtils.md5Hex(unescape(apiSig));
+        System.out.println(md5Hex);
 
+        byte[] bytes = track.getBytes(StandardCharsets.UTF_8);
 
-        authParams.add(new BasicNameValuePair("track", track));
-        authParams.add(new BasicNameValuePair("artist", artist));
+        String utf8EncodedTrack = new String(bytes, StandardCharsets.UTF_8);
+        bytes = artist.getBytes(StandardCharsets.UTF_8);
+
+        String utf8EncodedArtist = new String(bytes, StandardCharsets.UTF_8);
+
         authParams.add(new BasicNameValuePair(Constant.API_KEY_PARAMETER, Property.getPropertyValue("api_key")));
+        authParams.add(new BasicNameValuePair(Constant.METHOD_PARAMETER, "track.unlove"));
+        authParams.add(new BasicNameValuePair("track", utf8EncodedTrack));
+        authParams.add(new BasicNameValuePair("artist", utf8EncodedArtist));
         authParams.add(new BasicNameValuePair("api_sig", md5Hex));
         authParams.add(new BasicNameValuePair("sk", sk));
-        authParams.add(new BasicNameValuePair(Constant.METHOD_PARAMETER, "track.unlove"));
-        authParams.add(new BasicNameValuePair(Constant.FORMAT_PARAMETER, "json"));
+
+        //authParams.add(new BasicNameValuePair(Constant.FORMAT_PARAMETER, "json"));
 //        HttpClient client = HttpClients.createDefault();
 //        HttpPost tokenRequest = new HttpPost(applicationUrl+"oauth/token");
 //        tokenRequest.addHeader("Authorization", "Basic d2ViYXBwOg==");
@@ -57,7 +66,7 @@ public class TrackUnLove {
 //            throw new RuntimeException("Api login failed");
 //        }
 //        String responseText = EntityUtils.toString(response.getEntity());
-
+        System.out.println(authParams);
         HttpClient client = HttpClients.createDefault();
         HttpPost trackRequest = new HttpPost(URIBuild.getURIInquiryGet());
         trackRequest.setEntity(new UrlEncodedFormEntity(authParams, Charset.defaultCharset()));
