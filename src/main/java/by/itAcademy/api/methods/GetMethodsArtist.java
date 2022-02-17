@@ -1,6 +1,6 @@
 package by.itAcademy.api.methods;
 
-import by.itAcademy.api.endpoints.Constant;
+import by.itAcademy.api.constant.Constant;
 import by.itAcademy.api.pojo.topalbum.Root;
 import by.itAcademy.api.pojo.topalbum.Topalbums;
 import by.itAcademy.utils.Property;

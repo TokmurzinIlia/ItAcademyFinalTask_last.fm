@@ -1,6 +1,6 @@
 package by.itAcademy.utils;
 
-import by.itAcademy.api.endpoints.Constant;
+import by.itAcademy.api.constant.Constant;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URIBuilder;
 

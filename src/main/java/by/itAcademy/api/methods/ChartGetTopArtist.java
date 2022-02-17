@@ -1,6 +1,6 @@
 package by.itAcademy.api.methods;
 
-import by.itAcademy.api.endpoints.Constant;
+import by.itAcademy.api.constant.Constant;
 import by.itAcademy.api.pojo.chartGetTopArtist.Artists;
 import by.itAcademy.api.pojo.chartGetTopArtist.Root;
 import by.itAcademy.utils.Property;

@@ -1,4 +1,4 @@
-package by.itAcademy.api.endpoints;
+package by.itAcademy.api.constant;
 
 public class Constant {
     public static final String SCHEME = "http";
